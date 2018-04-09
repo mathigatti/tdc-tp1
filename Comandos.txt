@@ -1,0 +1,12 @@
+ifconfig -> mostrar interfaces de red
+netstat -i -> mostrar atributos interfaces:
+
+    B flag is for broadcast
+    M flag is for multicast
+    P flag is for promisc mode <-----
+    R is for running
+    U is for up
+
+sudo ifconfig eth0 promisc <- Activar
+sudo ifconfig eth0 -promisc <- Desactivar
+
