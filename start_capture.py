@@ -8,14 +8,17 @@ from scapy.all import *
 def packet_callback(a_packet):
     return a_packet.show()
 
+def callback(pkt):                                   
+    print(pkt.show())
 
 # ELEGIR:
 
 # Descomentar para sniffear manualmente:
-# packets = sniff(prn=callback, iface="eth0", count=10000)
+packets = sniff(prn=callback, iface="wlp3s0", count=10000)
+wrpcap("capture_labo6_2018-04-18_19-06hs.pcap", packets)
 
 # O Descomentar para cargar de un archivo "x":
-packets = rdpcap("capture.pcap")
+#packets = rdpcap("capture.pcap")
 
 
 print packets
@@ -24,7 +27,7 @@ print packets[ARP][0].show()
 print hex(packets[0].type)
 
 
-
+wrpcap("capture_labo6_2018-04-18_18-39hs.pcap", packets)
 
 
 # --Desde aca va el procesamiento de paquetes (Tambien se podria hacer en el callback si se captura live)--
