@@ -4,21 +4,19 @@
 # ATENCION: ESTO ESTA PYTHON 2.7!!
 
 from scapy.all import *
+import math
 
 def packet_callback(a_packet):
     return a_packet.show()
 
-def callback(pkt):                                   
-    print(pkt.show())
 
 # ELEGIR:
 
 # Descomentar para sniffear manualmente:
-packets = sniff(prn=callback, iface="wlp3s0", count=10000)
-wrpcap("capture_labo6_2018-04-18_19-06hs.pcap", packets)
+# packets = sniff(prn=callback, iface="eth0", count=10000)
 
 # O Descomentar para cargar de un archivo "x":
-#packets = rdpcap("capture.pcap")
+packets = rdpcap("capture.pcap")
 
 
 print packets
@@ -27,12 +25,12 @@ print packets[ARP][0].show()
 print hex(packets[0].type)
 
 
-wrpcap("capture_labo6_2018-04-18_18-39hs.pcap", packets)
+
 
 
 # --Desde aca va el procesamiento de paquetes (Tambien se podria hacer en el callback si se captura live)--
 symbol_count = {}
-
+total_count = 0
 for a_packet in packets:
     
     # No cuento los paquetes que no son ethernet (esta bien esto??)
@@ -44,11 +42,22 @@ for a_packet in packets:
     
     # Cuento:
     if current_tuple not in symbol_count:
-        symbol_count[current_tuple] = 0
+        symbol_count[current_tuple] = {'count': 0}
         
-    symbol_count[current_tuple] += 1
+    symbol_count[current_tuple]['count'] += 1
+    total_count += 1
 
+
+entropy = 0
+for a_symbol in symbol_count:
+    symbol_count[a_symbol]['probability'] = symbol_count[a_symbol]['count'] / float(total_count)
+    symbol_count[a_symbol]['information'] = math.ceil(-math.log(symbol_count[a_symbol]['probability'], 2))
+    entropy -= symbol_count[a_symbol]['probability'] * math.log(symbol_count[a_symbol]['probability'], 2)
+    
 
 # Printeo lindo:    
 for a_symbol in symbol_count:
-    print "%s \t----- %d" % (repr(a_symbol), symbol_count[a_symbol])
+    print "Type: %s \t----- Count: %d --- P(e): %f ---- I(e): %d bit" % (repr(a_symbol), symbol_count[a_symbol]['count'], symbol_count[a_symbol]['probability'], symbol_count[a_symbol]['information'])
+print "Source Entropy: %f" % entropy
+print "Max Entropy??: %f" % math.log(len(symbol_count), 2)
+# print total_count
