@@ -20,14 +20,12 @@ def load(file):
 
     process(packets)
 
-def record():
-    # Descomentar para sniffear manualmente:
-    packets = sniff(prn=packet_callback, iface="eth0", count=10000)
-
+def record(networkName,recordName):
+    packets = sniff(prn=packet_callback, iface=networkName, count=10000)
+    wrpcap(recordName + ".pcap", packets)
     process(packets)
 
 def process(packets):
-    # --Desde aca va el procesamiento de paquetes (Tambien se podria hacer en el callback si se captura live)--
     symbol_count = {}
     total_count = 0
     for a_packet in packets:
@@ -65,6 +63,6 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        record()
+        record('wlan0', 'record1')
     else:       
         load(sys.argv[1])

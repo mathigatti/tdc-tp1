@@ -1,0 +1,33 @@
+IMPORTANTE/Principal Objetivo: Encontrar nodos distinguidos, en particular el default gateway
+
+Intro
+	Motivación
+	Resumen (Objetivos)
+	Hipotesis de trabajo
+
+Metodologias (En pasado simple)
+	Herramientas (Scapy)
+	Modelo de las fuentes
+		S1
+		S2
+			Variantes
+				ips resultantes de union de src y dst
+				ips resultantes de who-has src
+				...
+				ips resultantes de who-has dst
+				ips resultantes de is-at src
+				ips resultantes de is-at dst
+
+		Duración de las capturas (Tiempo o tramas)
+		Tecnología
+			Red (Wifi/Ethernet)
+			Tamaño de la red (Red hogareña vs laboratorio o starbucks)
+
+Resultados
+	Analisis objetivo de los graficos
+
+Conclusiones/Discusión
+	S1 deduzco la tecnología
+	S2 deduzco los nodos distinguidos
+	¿El grafo sirve para distinguir un default gateway de un nodo muy frecuentado? 
+	¿Las herramientas utilizadas estuvieron buenas?

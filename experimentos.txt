@@ -1,0 +1,17 @@
+Experimentos
+
+Para S1:
+	* Mostrar la cantidad de infomación de cada símbolo comparando con la entropía de la fuente y la entropía máxima.
+		Grafico de barras (Ordenar los elementos del eje x de una forma copada)
+
+	Mostrar el porcentaje de tráfico broadcast sobre el tráfico total.
+
+	Mostrar el porcentaje de aparición de cada protocolo encontrado.
+		Gráfico de torta o de barras
+
+Para S2:
+	* Mostrar la cantidad de información de cada símbolo comparando con la entropía de la fuente y la entropía máxima.
+
+	* Dados los paquetes ARP, mostrar mediante un grafo, la red de mensajes ARP subyacente (de ser necesario, agrupar adecuadamente varios nodos en uno para mejorar la visualización).
+
+
