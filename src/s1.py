@@ -39,7 +39,7 @@ def process(packets):
         
         # Cuento:
         if current_tuple not in symbol_count:
-            symbol_count[current_tuple] = {'count': 1}
+            symbol_count[current_tuple] = {'count': 0}
             
         symbol_count[current_tuple]['count'] += 1
         total_count += 1

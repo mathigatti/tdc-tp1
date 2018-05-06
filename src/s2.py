@@ -35,27 +35,25 @@ def run(file):
     symbol_count = {}
     total_count = 0
     for a_packet in packets[ARP]:
-            
-        # < BROADCAST|UNICAST, PROTOCOL(hex) >
-#        current_tuple = (arp_operation(a_packet), a_packet.psrc, a_packet.pdst)
-#        current_tuple = (arp_operation(a_packet), a_packet.psrc)
-        current_tuple = (arp_operation(a_packet), a_packet.pdst)
+        if a_packet[ARP].op == 1:  # who-has (request)
+    #        current_tuple = (arp_operation(a_packet), a_packet.psrc, a_packet.pdst)
+    #        current_tuple = (arp_operation(a_packet), a_packet.psrc)
+            current_tuple = (arp_operation(a_packet), a_packet.pdst)
 
-        # Cuento:
-        if current_tuple not in symbol_count:
-            symbol_count[current_tuple] = {'count': 1}
-            
-        symbol_count[current_tuple]['count'] += 1
-        total_count += 1
+            # Cuento:
+            if current_tuple not in symbol_count:
+                symbol_count[current_tuple] = {'count': 0}
+                
+            symbol_count[current_tuple]['count'] += 1
+            total_count += 1
 
     entropy = 0
     for a_symbol in symbol_count:
         symbol_count[a_symbol]['probability'] = symbol_count[a_symbol]['count'] / float(total_count)
-        symbol_count[a_symbol]['information'] = math.ceil(-math.log(symbol_count[a_symbol]['probability'], 2))
+        symbol_count[a_symbol]['information'] = -math.log(symbol_count[a_symbol]['probability'], 2)
         entropy -= symbol_count[a_symbol]['probability'] * math.log(symbol_count[a_symbol]['probability'], 2)
-        
 
-    # Printeo lindo:    
+    # Printeo lindo:
     for a_symbol in symbol_count:
         print "Type: %s \t----- Count: %d --- P(e): %f ---- I(e): %d bit" % (repr(a_symbol), symbol_count[a_symbol]['count'], symbol_count[a_symbol]['probability'], symbol_count[a_symbol]['information'])
     print "Source Entropy: %f" % entropy
