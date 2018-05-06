@@ -5,6 +5,7 @@
 import sys
 from scapy.all import *
 import math
+import csv
 
 def packet_callback(a_packet):
     return a_packet.show()
@@ -59,6 +60,12 @@ def run(file):
     print "Source Entropy: %f" % entropy
     print "Max Entropy: %f" % math.log(len(symbol_count), 2)
     # print total_count
+
+    with open(file.replace('.pcap', '_S2_output.csv'), 'w') as f_out:
+        writer = csv.writer(f_out)
+        writer.writerow(['Symbol', 'Count', 'Probability', 'Information'])
+        for a_symbol in symbol_count:
+            writer.writerow([repr(a_symbol), symbol_count[a_symbol]['count'], symbol_count[a_symbol]['probability'], symbol_count[a_symbol]['information']])
 
 
 if __name__ == "__main__":
