@@ -43,7 +43,7 @@ def run(file):
 
         # Cuento:
         if current_tuple not in symbol_count:
-            symbol_count[current_tuple] = {'count': 1}
+            symbol_count[current_tuple] = {'count': 0}
             
         symbol_count[current_tuple]['count'] += 1
         total_count += 1
@@ -51,7 +51,7 @@ def run(file):
     entropy = 0
     for a_symbol in symbol_count:
         symbol_count[a_symbol]['probability'] = symbol_count[a_symbol]['count'] / float(total_count)
-        symbol_count[a_symbol]['information'] = math.ceil(-math.log(symbol_count[a_symbol]['probability'], 2))
+        symbol_count[a_symbol]['information'] = -math.log(symbol_count[a_symbol]['probability'], 2)
         entropy -= symbol_count[a_symbol]['probability'] * math.log(symbol_count[a_symbol]['probability'], 2)
         
 
