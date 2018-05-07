@@ -1,109 +1,145 @@
-\documentclass[hidelinks,a4paper,12pt, nofootinbib]{article}
-\usepackage[nounderscore]{syntax}
-\usepackage[left=3cm, top=2.5cm, right=2cm, left=2.5cm]{geometry}
-\usepackage[spanish, es-tabla]{babel} %es-tabla es para que ponga Tabla en vez de Cuadro en el caption
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{xspace}
-\usepackage{xargs}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage{caratula}
-\usepackage[bottom]{footmisc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-\usepackage{array}
-\usepackage{xcolor,colortbl}
-\usepackage{amsthm}
-\usepackage{listings}
-\usepackage{soul}
-\usepackage[titletoc]{appendix}
-\usepackage{pgf}
+\documentclass[%
+	%draft,
+	%submission,
+	%compressed,
+	final, %technote,
+	%internal,
+	%submitted,
+	%inpress,
+	%reprint,
+	% %titlepage,
+	notitlepage,
+	%anonymous,
+	narroweqnarray,
+	inline,
+	twoside,
+        %invited,
+	]{ieee}
+
+\usepackage[top=3cm, bottom=2cm, left=1.5cm, right=1.5cm,a4paper,includeheadfoot]{geometry}
+
+
+
+\usepackage[utf8]{inputenc}			% idioma
+\usepackage[spanish]{babel}
+\usepackage{float}
+%\usepackage{color}
+%\usepackage{colortbl}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{verbatim}
+
+\usepackage{hyperref}				% urls
+
+% -------- PARA FIGURAS
 \usepackage{graphicx}
-\usepackage{sidecap}
-\usepackage{amsmath}
-\usepackage{wrapfig}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage{tikz-qtree}
+%\usepackage{capt-of}
+% -------- FIN FIGURAS
 
+% -------- PARA MONXTRAR EL CODIGO DE MANERA AMENA
+\usepackage{courier}
+\usepackage{listings}
+\lstset{ %
+	language=C++,                % choose the language of the code
+	basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+	numbersep=5pt,                  % how far the line-numbers are from the code
+%	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=single,           % adds a frame around the code
+	tabsize=6,          % sets default tabsize to 2 spaces
+	captionpos=b,           % sets the caption-position to bottom
+	breaklines=true,        % sets automatic line breaking
+	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+}
+% -------- FIN CODIGO
 
-%\usepackage{minted}
-
-%Formato de los links
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks   = true, %Colours links instead of ugly boxes
-  urlcolor     = blue, %Colour for external hyperlinks
-  linkcolor    = blue, %Colour of internal links
-  citecolor   = red %Colour of citations
+\hypersetup{			%sacar los colores horrendos de las ref
+	colorlinks=false,
+	pdfborder={0 0 0},
 }
 
-\usepackage{comment}
-%Bibliografia
-\usepackage[
-  backend=bibtex,
-  style=alphabetic
-]{biblatex}
-\addbibresource{bibliografia.bib}
 
-
-\captionsetup[table]{labelsep=space}
-
-
-\setlength{\parindent}{4em}
-\setlength{\parskip}{0.5em}
-
-
-%%fancyhdr
-\pagestyle{fancy}
-\thispagestyle{fancy}
-\addtolength{\headheight}{1pt}
-\lhead{Teoría de las Comunicaciones: TP1}
-\rhead{$1º$ cuatrimestre de 2018}
-\cfoot{\thepage\ / \pageref{LastPage}}
-\renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\labelitemi}{$\bullet$}
-\setcounter{section}{-1}
-
-%%caratula
-\materia{Teoría de las Comunicaciones}
-\titulo{Trabajo Práctico Número 1}
-%\subtitulo{}
-%\grupo{Grupo n\_n}
-\integrante{COMPLETAR}{COMPLETAR}{COMPLETAR}
-\integrante{COMPLETAR}{COMPLETAR}{COMPLETAR}
-\integrante{Gatti, Mathias}{477/14}{mathigatti@gmail.com}
-
-\fecha{7 de Mayo de 2018}
-
-\usepackage{etoolbox}
-\AtBeginEnvironment{tikzpicture}{\shorthandoff{>}\shorthandoff{<}}{}{}
-\newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
-\title{tp-tdc}
 \begin{document}
-\maketitle
-
-\tableofcontents
-\newpage
 
 
-\section{Introducción}
+\title[Wiretapping]{%
+	Análisis de tráfico de redes locales usando Teoría de la Información
+}
+
+\author[BALBACHAN, COSTA, GATTI]{
+Alexis Balbachan \authorinfo{A. Balbachan e-mail: alexisbalbachan@gmail.com}%
+\and{}Manuel Costa \authorinfo{M. Costa, e-mail: manucos94@gmail.com}%
+\and{}Mathias Gatti\authorinfo{M. Gatti, e-mail: mathigatti@gmail.com}
+}
+
+%\journal{Grupo 13: Teor\'ia de las Comunicaciones, Departamento de Computaci\'on, UBA}
+
+\firstpage{1}
+
+\maketitle               
+
+
+\begin{abstract} 
+\end{abstract}
+
+\begin{keywords}
+entropía, Teoría de la informacin, ARP, LAN, unicast, broadcast, sniffing
+\end{keywords}
+
+
 \input{intro.tex}
-\newpage
 
-\section{Metodología}
 \input{metodos.tex}
-\newpage
 
-\section{Resultados}
 \input{resultados.tex}
-\newpage
 
-\section{Conclusión}
 \input{conclusion.tex}
 
+%----------------------------------------------------------------------
+
+%\begin{thebibliography}{1}
+
+%\bibitem{enunciado}
+%C\'atedra de Teor\'ia de las Comunicaciones\\
+%\newblock {\em Primer trabajo pr\'actico}\\
+%\newblock Primer cuatrimestre $2013$
+
+%\bibitem{arp}
+%RFC 826 - Ethernet Address Resolution Protocol\\
+%\url{http://tools.ietf.org/html/rfc826}\\
+%\newblock C. Plummer $1982$
+
+%\bibitem{conflicto}
+%RFC 5227 - IPv4 Address Conflict Detection\\
+%\url{http://tools.ietf.org/html/rfc3927}\\
+%\newblock S. Cheshire $2008$
+
+%\bibitem{link}
+%RFC 3927 - Configuration of IPv4 Link-Local Addresses\\
+%\url{http://tools.ietf.org/html/rfc3927}\\
+%\newblock Cheshire, et al. $2005$
+
+%\bibitem{patente}
+%Method and apparatus for detecting a router that improperly responds to ARP requests\\
+%\newblock US 7729292 B2\\
+%\url{http://www.google.com/patents/US7729292}\\
+%\newblock Stuart D. Cheshire y Joshua V. Graessley
+
+%\bibitem{scapy}
+%\texttt{Scapy}\\
+%\url{http://www.secdev.org/projects/scapy}
+
+%\bibitem{dhcp}
+%RFC 1531 - Dynamic Host Configuration Protocol\\
+%\url{https://tools.ietf.org/html/rfc1531}
+
+%\bibitem{tcp}
+%\url{http://www.tcpdump.org}
+
+%\end{thebibliography}
+
+
 \end{document}
+
