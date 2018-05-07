@@ -17,7 +17,7 @@ def arp_operation(pkt):
         return 'is-at'
     raise Exception('Valor de ARP Op inesperado: ' + pkt[ARP].op)
 
-def run(file):
+def run():
 
     # ELEGIR:
 
@@ -25,31 +25,37 @@ def run(file):
     # packets = sniff(prn=callback, iface="eth0", count=10000)
 
     # O Descomentar para cargar de un archivo "x":
-    packets = rdpcap(file)
+    data = ['data/capture_labo6_2018-04-18_18-39hs.pcap',
+'data/capture_labo6_2018-04-18_19-01hs.pcap',
+'data/capture_labo6_2018-04-18_19-06hs.pcap']
+    
+    packets = rdpcap(data[0])
+    packets += rdpcap(data[1])
+    packets += rdpcap(data[2])
 
-    print packets
-    print packets[ARP]
-    print packets[ARP][0].show()
-    print hex(packets[0].type)
+    #data = ['data/hogar_ethernet.pcap']
+    #data = ['data/starbucks.pcap']
+    
+    #packets = rdpcap(data[0])
+
 
     # --Desde aca va el procesamiento de paquetes (Tambien se podria hacer en el callback si se captura live)--
     symbol_count = {}
     total_count = 0
     for a_packet in packets[ARP]:
-            
-        # < BROADCAST|UNICAST, PROTOCOL(hex) >
-        current_tuple = (a_packet.psrc, a_packet.pdst)
+        if a_packet[ARP].op == 1:
+            current_tuple = (a_packet.psrc, a_packet.pdst)
 
-        # Cuento:
-        if current_tuple not in symbol_count:
-            symbol_count[current_tuple] = 0
+            # Cuento:
+            if current_tuple not in symbol_count:
+                symbol_count[current_tuple] = 0
 
-        symbol_count[current_tuple] += 1
-        total_count += 1
+            symbol_count[current_tuple] += 1
+            total_count += 1
 
     edges = map(lambda x: (x[0][0],x[0][1],x[1]), symbol_count.items())
 
     grafo_dirigido(list(edges))
 
 if __name__ == "__main__":
-   run(sys.argv[1])    
+   run()    
