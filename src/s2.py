@@ -56,7 +56,7 @@ def run(file):
 
     # Printeo lindo:
     for a_symbol in symbol_count:
-        print "Type: %s \t----- Count: %d --- P(e): %f ---- I(e): %d bit" % (repr(a_symbol), symbol_count[a_symbol]['count'], symbol_count[a_symbol]['probability'], symbol_count[a_symbol]['information'])
+        print "Type: %s \t----- Count: %d --- P(e): %f ---- I(e): %f bit" % (repr(a_symbol), symbol_count[a_symbol]['count'], symbol_count[a_symbol]['probability'], symbol_count[a_symbol]['information'])
     print "Source Entropy: %f" % entropy
     print "Max Entropy: %f" % math.log(len(symbol_count), 2)
     # print total_count

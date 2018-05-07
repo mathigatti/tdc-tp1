@@ -12,7 +12,7 @@ def plot_v1(data):
     # Show the 50% mark, which would indicate an equal
     # number of tasks being completed by the robot and the
     # human. There are 39 tasks total, so 50% is 19.5
-    ax.hlines(19.5, -0.5, 5.5, linestyle='--', linewidth=1)
+    ax.hlines(19.5, linestyle='--', linewidth=1)
     
     # Set a reasonable y-axis limit
     ax.set_ylim(0, 40)
