@@ -58,12 +58,12 @@ def plot_information(file_name):
 	print series
 
 	fig, ax = plt.subplots()
-	ax.hlines(entropy, -0.5, 5.5, linestyle='--', linewidth=1, label=u'Entropia', color='red')
-	ax.hlines(max_entropy, -0.5, 5.5, linestyle='--', linewidth=1, label=u'Maxima Entropia', color='green')
+	ax.hlines(entropy, -0.5, 50, linestyle='--', linewidth=1, label=u'Entropia', color='red')
+	ax.hlines(max_entropy, -0.5, 50, linestyle='--', linewidth=1, label=u'Maxima Entropia', color='green')
 	ax.set_ylabel('Informacion (bits)')
 	ax.yaxis.set_major_formatter(ticker.FuncFormatter(formatter))
 	ax.legend(title='Rotulos')
-	series.plot.bar(ax=ax, rot=20, fontsize=8, sort_columns=True)
+	series.plot.bar(ax=ax, fontsize=8, sort_columns=True)
 
 	plt.tight_layout()
 	plt.savefig('information_{}.png'.format(re.search(u'([^/]+/)*([^\.]+)', file_name).group(2)))
