@@ -53,6 +53,27 @@
 	breaklines=true,        % sets automatic line breaking
 	breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
 }
+\usepackage{sidecap}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+%\usepackage{minted}
+
+%Formato de los links
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
 % -------- FIN CODIGO
 
 \hypersetup{			%sacar los colores horrendos de las ref
@@ -79,7 +100,6 @@ Alexis Balbachan \authorinfo{A. Balbachan e-mail: alexisbalbachan@gmail.com}%
 \firstpage{1}
 
 \maketitle               
-
 
 \begin{abstract} 
 \end{abstract}
