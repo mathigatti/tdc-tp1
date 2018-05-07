@@ -22,6 +22,6 @@ def grafo_dirigido(edges):
 	
 	# labels
 	nx.draw_networkx_labels(G, pos, font_size=10, font_family='sans-serif')
-	plt.title('Starbucks')
+	plt.title('Laboratorio de Computacion')
 	plt.axis('off')
 	plt.savefig('grafo.png')
