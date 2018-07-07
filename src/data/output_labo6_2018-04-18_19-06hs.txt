@@ -1,7 +1,0 @@
-None
-0x806
-('UNICAST', '0x800') 	----- 9856
-('BROADCAST', '0x806') 	----- 41
-('UNICAST', '0x86dd') 	----- 35
-('BROADCAST', '0x800') 	----- 52
-('UNICAST', '0x806') 	----- 2

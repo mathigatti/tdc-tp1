@@ -1,15 +1,9 @@
 \section{Discusión}
 
-Como resultado final pudimos identificar de distintas maneras nodos destacados, por ejemplo a partir del grafo subyacente que armamos pudimos identificar en todos los casos al gateway a partir del nodo de mayor grado. A continuación describimos brevemente cada caso analizado por separado.
+Como resultado final pudimos identificar símbolos destacados efectivamente en redes de tamaño mediano y grande, y con moderado éxito en redes pequeñas. Creemos que el problema de la red pequeña podría contrarrestarse tomando mediciones durante una mayor cantidad de tiempo aunque si la red es suficientemente chica (Por ejemplo 1 solo host y 1 solo router) probablemente se vuelva imposible diferenciar a un host de un router debido a la escasez de paquetes ARP.
 
-\subsubsection{Red Domiciliaria}
+Es importante destacar a parte de nuestro método estadístico a la utilización del grafo subyacente para identificar satisfactoriamente gateway a partir del nodo de mayor grado.
 
-En la red domiciliaria se pudo ver en el grafo resultante como destacaban dos nodos. Uno de ellos, el de mayor grado, era el gateway, el otro creemos que fue la computadora que tomó las mediciones ya que estaba accediendo a multiples sitios de internet lo cual provoco un gran intercambio de paquetes.
+Cabe destacar finalmente que si bien los resultados fueron satisfactorios estos están condicionados al momento y lugar en que tomamos las muestras, de todas maneras por lo dicho anteriormente creemos que si la red es suficientemente grande nuestras técnicas deberían adaptarse y funcionar correctamente en ámbitos bastante diversos.
 
-\subsubsection{Laboratorio de Computación}
-
-Este es el grafo mas grande y en el cual se vuelve aún mas claro el patrón que veniamos viendo, el nodo 10.2.203.254 resalta completamente de los demás y concuerda perfectamente con nuestra hipótesis de que el gateway es el que mas paquetes intercambia en este protocolo, lo cual lo vuelve un nodo destacado.
-
-\subsubsection{Starbucks}
-
-Quizas por una mala configuración de la red o por la poca clientela que había en este local en el horario en que se tomaron las mediciones (7:10 AM) es que este grafo resultó ser tan pobre, de todas maneras se pueden observar perfectamente los dos nodos que uno esperaría ver como minimo. El gateway y la computadora que tomo las mediciones.
+Las mediciones hechas podrían haber terminado en resultados distintos si se hubieran tomado en horarios con menor actividad, lo cual podría haber resultado en menor cantidad de paquetes y por lo tanto resultados más pobres. Por esta razón intentamos realizar las mediciones en horarios en que estas redes son normalmente utilizadas, o sea en el momento en que se puede ver su comportamiento general.

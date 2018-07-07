@@ -17,27 +17,14 @@ def arp_operation(pkt):
         return 'is-at'
     raise Exception('Valor de ARP Op inesperado: ' + pkt[ARP].op)
 
-def run():
-
-    # ELEGIR:
-
-    # Descomentar para sniffear manualmente:
-    # packets = sniff(prn=callback, iface="eth0", count=10000)
-
-    # O Descomentar para cargar de un archivo "x":
-    data = ['data/capture_labo6_2018-04-18_18-39hs.pcap',
-'data/capture_labo6_2018-04-18_19-01hs.pcap',
-'data/capture_labo6_2018-04-18_19-06hs.pcap']
+def run(file):
     
-    packets = rdpcap(data[0])
-    packets += rdpcap(data[1])
-    packets += rdpcap(data[2])
+    packets = rdpcap(file)
 
     #data = ['data/hogar_ethernet.pcap']
     #data = ['data/starbucks.pcap']
     
     #packets = rdpcap(data[0])
-
 
     # --Desde aca va el procesamiento de paquetes (Tambien se podria hacer en el callback si se captura live)--
     symbol_count = {}
@@ -58,4 +45,4 @@ def run():
     grafo_dirigido(list(edges))
 
 if __name__ == "__main__":
-   run()    
+   run(sys.argv[1])    

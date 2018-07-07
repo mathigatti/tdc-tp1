@@ -5,22 +5,17 @@ Para la captura de tráfico se utilizó el módulo de manipulación de paquetes 
 \subsection*{Modelo de las fuentes}
 
 \subsubsection*{Fuente S1}
-Dado el tráfico de capa 2 obtenido en cada captura, se modeló una fuente de memoria nula S1 = $ \{ s_{1}, s_{2}, s_{3},...,s_{n} \}$ donde cada $ s_{i} $ está formado por una tupla <broadcast|unicast, protocolo capa 3>.
+Dado el tráfico de capa 2 obtenido en cada captura, se modeló una fuente de memoria nula S1 = $ \{ s_{1}, s_{2}, s_{3},...,s_{n} \}$ donde cada $ s_{i} $ está formado por una tupla (broadcast $\|$ unicast), protocolo capa 3.
 
 \subsubsection*{Fuente S2}
-Igualmente que S1, se modeló la fuente de memoria nula S2 con el objetivo utilizando sólo las direcciones IP dentro de paquetes de protocolo ARP con el objetivo de poder distinguir los hosts de cada red. En este caso se consideraron diversas opciones para el modelado de la fuente, donde cada $ s_{i} $ representaba las direcciones IP de los hosts, aunque su contabilización se regía por si la dirección aparecía en los campos:
-\begin{itemize}
-	\item Fuente o Destino
-	\item who-has Fuente
-	\item who-has Destino
-	\item is-at Fuente
-	\item is-at Destino
-\end{itemize}
+Para el ejercicio 2 modelamos la fuente de memoria nula S2 la cual intenta definir sus símbolos de manera que estos permitan encontrar nodos destacados a partir de herramientas de teoría de la información y los paquetes ARP de una red.
+
+Luego de experimentar con distintas variantes posibles de los datos provistos por los paquetes ARP nos terminamos decidiendo por utilizar el destino de los paquetes who-has ya que estos a diferencia de los paquetes is-at son broadcast por lo que se propagan a través distintas subredes y switches permitiendo recibirlos en gran número lo cual genera mediciones más robustas. Por otro lado elegimos quedarnos solo con el destino ya que creemos que es una buena heurística para encontrar nodos destacados, ya que si un nodo es destacado (por ejemplo un router con salida a internet) entonces varios hosts querrán comunicarse con él, convirtiéndolo en el destino de un paquete who-has. Notar que no tendría tanto sentido utilizar la fuente ya que al menos para routers no va a ser de mucha utilidad debido a que probablemente estos ya tengan en su tabla a la mayoría de las MACs de los hosts de su red y no necesiten generar tantos paquetes ARP who-has, por esta razón este pasaría desapercibido entre los demás hosts.
 
 \subsubsection*{Capturas}
-Se hicieron 3 capturas en redes diferentes de 10000 paquetes cada una:
+Se hicieron 3 capturas en redes diferentes durante aproximadamente 30 minutos (Todas con al menos 10.000 tramas):
 \begin{itemize}
-	\item Red hogareña mediana, con aproximadamente 10 usuarios, se utilizó una interfaz ethernet.
-	\item Red pública grande, en este caso se capturó mediante una interfaz wifi el tráfico del laboratorio de informática de la universidad.
-	\item Red pública grande, también mediante la interfaz wifi, se capturó el tráfico en un Starbucks.
+	\item Red hogareña pequeña, con aproximadamente 10 usuarios, se utilizó una interfaz ethernet. La medición se realizó un jueves por la noche, a las 20 horas cuando la mayoría de los usuarios de la misma estaban conectados.
+	\item Red mediana de oficina de una PyMe, mediciones tomadas mediante la interfaz wifi, se capturó el tráfico un miércoles a las 12 del mediodía, cuando la red estaba levemente congestionada.
+	\item Red grande del laboratorio de informática de la universidad, mediciones tomadas mediante una interfaz wifi, se capturó el tráfico a las 19 horas de un miércoles en el laboratorio turing, cuando había 8 personas más utilizando las computadoras del laboratorio.
 \end{itemize}

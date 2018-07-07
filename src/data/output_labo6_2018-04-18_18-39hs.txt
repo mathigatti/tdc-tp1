@@ -1,8 +1,0 @@
-Mediciones tomadas el 18/04/2018 a las 18:41 en el laboratorio 6 del DC
-
-Conectado a la red wifi "Laboratorios-DC" en modo promiscuo (no monitor)
-
-('BROADCAST', '0x800') 	----- 352
-('BROADCAST', '0x806') 	----- 254
-('UNICAST', '0x86dd') 	----- 251
-('UNICAST', '0x800') 	----- 9108
