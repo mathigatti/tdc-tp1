@@ -12,7 +12,7 @@ Los paquetes broadcast representan un poco más del $5\%$ del total, lo cual es 
  \caption{\normalfont Proporción de paquetes unicast/broadcast en la captura}
 \end{figure}
 
-Como se puede ver en el siguiente diagrama de torta los protocolos encontrados fueron $ARP$, este es un protocolo de resolución de direcciones, mapea direcciones $IP$ a direcciones $MAC$ (Va del nivel de red al nivel de enlaces), por otro lado esta $IPv4$ el protocolo de internet (Junto con $IPv6$) utilizado para transmitir mensajes, por ejemplo datos de usuarios, entre redes lan.
+Como se puede ver en el siguiente diagrama de torta los protocolos encontrados fueron $ARP$ e $IP$ (tanto v4 como v6), el protocolo de internet utilizado para transmitir mensajes, por ejemplo datos de usuarios, entre redes LAN.
 
 \begin{figure}[H]
  \centering
@@ -20,9 +20,9 @@ Como se puede ver en el siguiente diagrama de torta los protocolos encontrados f
  \caption{\normalfont Proporción de protocolos en la captura}
 \end{figure}
 
-Habiendo visto el primer gráfico de torta no debería llamar la atención ver que el símbolo de menor entropía, o sea el más frecuente o de mayor probabilidad, es un unicast. Es un poco más difícil saber por qué específicamente ese protocolo tiene entropía tan baja a diferencia de los otros, posiblemente sea el protocolo mas popular visto previamente, IPv4.
+Habiendo visto el primer gráfico de torta no debería llamar la atención ver que el símbolo de menor entropía, o sea el más frecuente o de mayor probabilidad, es un unicast. En particular el protocolo con menor información es IPv4, lo que es consistente con ser el protocolo más popular en la red.
 
-Debido a este símbolo destacado también sucede que la entropía no es máxima ya que al existir este, los demás símbolos son menos probables, impidiendo la condición necesaria para la entropía máxima, que todos los símbolos sean equiprobables.
+Debido a este símbolo destacado también sucede que la entropía no es máxima, aún cuando el resto de los símbolos tienen una distribución más uniforme entre sí.
 
 \begin{figure}[H]
  \centering
@@ -65,7 +65,7 @@ Los paquetes broadcast representan casi el $25\%$ del total, esto es considerabl
  \caption{\normalfont Proporción de paquetes unicast/broadcast en la captura}
 \end{figure}
 
-En esta red a diferencia de la anterior llegamos a ver algunos paquetes IPv6, se puede observar que este protocolo aún es mucho menos popular que el clásico IPv4. La cantidad de paquetes ARP es bastante alta apoyando la hipótesis dicha anteriormente sobre la gran cantidad de broadcasts.
+La cantidad de paquetes ARP es bastante alta apoyando la hipótesis dicha anteriormente sobre la gran cantidad de broadcasts.
 
 \begin{figure}[H]
  \centering
@@ -73,7 +73,7 @@ En esta red a diferencia de la anterior llegamos a ver algunos paquetes IPv6, se
  \caption{\normalfont Proporción de protocolos en la captura}
 \end{figure}
 
-El resultado es similar al visto en la red anterior dando como símbolo destacado un unicast.
+El resultado es similar al visto en la red anterior dando como símbolo destacado un $(unicast, IPv4)$.
 
 \begin{figure}[H]
  \centering
@@ -123,7 +123,7 @@ Los paquetes ARP comprenden menos del $5\%$ lo cual parece indicar que la red es
  \caption{\normalfont Proporción de protocolos en la captura}
 \end{figure}
 
-Al igual que en los casos anteriores el símbolo de menor entropía es un unicast de protocolo 0x800, es interesante observar como dependiendo el protocolo es tiene mayor entropía unicast o broadcast, por ejemplo con el protocolo 0x806, los broadcasts tienen menor entropía, este código posiblemente sea el de ARP por lo tanto.
+Al igual que en los casos anteriores el símbolo de menor entropía es un unicast de protocolo IPv4 (0x800), es interesante observar como dependiendo del protocolo varía si unicast o broadcast tiene mayor información. Por ejemplo con el protocolo ARP (0x806), los broadcasts tienen menor cantidad de bits, contrariamente a lo que pasa con IPv4. Esta tendencia se vió en todos los casos.
 
 \begin{figure}[H]
  \centering
