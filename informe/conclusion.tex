@@ -2,8 +2,8 @@
 
 Como resultado final pudimos identificar símbolos destacados efectivamente en redes de tamaño mediano y grande, y con moderado éxito en redes pequeñas. Creemos que el problema de la red pequeña podría contrarrestarse tomando mediciones durante una mayor cantidad de tiempo aunque si la red es suficientemente chica (por ejemplo un solo host y un solo router) probablemente se vuelva imposible diferenciar a un host de un router debido a la escasez de paquetes ARP.
 
+Esto está relacionado a la no independencia de los símbolos de S2. Una vez que todos los nodos de la red mandaron who-has para cierto destino, las probabilidades de ver un who-has para ese destino de nuevo se hacen ínfimas. Si bien en una red suficientemente grande, donde se conectan y desconectan distintos hosts, este problema puede no ser tan notorio, generando una sensación de independencia, en una red chica (y más en una Ethernet, donde sería esperable que haya menos conexiones y desconexiones) esto se evidencia.
+
 Es importante destacar a parte de nuestro método estadístico a la utilización del grafo subyacente para identificar satisfactoriamente gateway a partir del nodo de mayor grado.
 
 Cabe destacar finalmente que si bien los resultados fueron satisfactorios estos están condicionados al momento y lugar en que tomamos las muestras, de todas maneras por lo dicho anteriormente creemos que si la red es suficientemente grande nuestras técnicas deberían adaptarse y funcionar correctamente en ámbitos bastante diversos.
-
-Las mediciones hechas podrían haber terminado en resultados distintos si se hubieran tomado en horarios con menor actividad, lo cual podría haber resultado en menor cantidad de paquetes y por lo tanto resultados más pobres. Por esta razón intentamos realizar las mediciones en horarios en que estas redes son normalmente utilizadas, o sea en el momento en que se puede ver su comportamiento general.
